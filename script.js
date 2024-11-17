@@ -244,10 +244,10 @@ function getFeatureStyle(feature, key) {
     // Style par défaut si la clé de couleur n'est pas trouvée
     const defaultStyle = {
         color: '#888', // Couleur par défaut
-        weight: 2, // Largeur de ligne par défaut
+        weight: 1, // Largeur de ligne par défaut
         fillColor: '#888', // Remplissage par défaut pour les Polygons
         fillOpacity: 0.3, // Opacité de remplissage
-        radius: 6, // Rayon par défaut pour les points
+        radius: 12, // Rayon par défaut pour les points
     };
 
     // Vérification de la disponibilité de la couleur personnalisée
