@@ -58,7 +58,7 @@ function getLayerLabel(key) {
         case 'territoire_qpv': return 'Quartiers prioritaires(QPV)';
         case 'plan_velo': return 'Plan vélo';
         case 'amenagement_cyclable': return 'Aménagements cyclables';
-        case 'emplacement_reserve': return 'Emplacement réservé';
+        case 'emplacement_reserve': return 'Emplacements réservés';
         default: return key.toLowerCase();
     }
 }
