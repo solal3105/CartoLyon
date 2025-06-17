@@ -4,7 +4,10 @@
 // Ajouter des écouteurs pour les filtres de colonnes
 function addColumnFilterListeners(key) {
     document.querySelectorAll(`#column-filter-${key} .column-filter`).forEach(inputElement => {
-        inputElement.addEventListener('input', () => applyColumnFilters(key));
+        // Utiliser l'événement 'change' pour les listes déroulantes afin de 
+        // détecter correctement les modifications de sélection
+        const eventType = inputElement.tagName.toLowerCase() === 'select' ? 'change' : 'input';
+        inputElement.addEventListener(eventType, () => applyColumnFilters(key));
     });
 }
 
