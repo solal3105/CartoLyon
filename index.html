@@ -19,7 +19,7 @@
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
     <title>Transports en Commun Lyonnais</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
@@ -28,6 +28,12 @@
     <header id="site-header">
         <h1>Transports en Commun Lyonnais</h1>
     </header>
+    <div id="basemap-control" class="basemap-control">
+        <select id="basemap-select">
+            <option value="openStreetMap">OpenStreetMap</option>
+            <option value="cartoDBPositron">CartoDB Positron</option>
+        </select>
+    </div>
     <div id="map"></div>
 
     <!-- Leaflet Scripts -->
