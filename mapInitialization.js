@@ -29,15 +29,31 @@ const mapStyles = {
 let openStreetMapLayer = addCustomTileLayer(mapStyles.openStreetMap.url, mapStyles.openStreetMap.options);
 let cartoDBPositronLayer = addCustomTileLayer(mapStyles.cartoDBPositron.url, mapStyles.cartoDBPositron.options);
 
-// Ajouter initialement une seule couche de base (par exemple OpenStreetMap)
-openStreetMapLayer.addTo(map);
+// Ajouter initialement une seule couche de base (OpenStreetMap)
+let currentBaseLayer = openStreetMapLayer.addTo(map);
 
-// Ajouter le sélecteur de styles de carte en haut à droite
-let baseMaps = {
-    "OpenStreetMap": openStreetMapLayer,
-    "CartoDB Positron": cartoDBPositronLayer
-};
-L.control.layers(baseMaps, null, { position: 'topright' }).addTo(map);
+// Gestion du sélecteur de style de carte personnalisé
+function switchBasemap(styleKey) {
+    if (currentBaseLayer) {
+        map.removeLayer(currentBaseLayer);
+    }
+    switch (styleKey) {
+        case 'cartoDBPositron':
+            currentBaseLayer = cartoDBPositronLayer;
+            break;
+        case 'openStreetMap':
+        default:
+            currentBaseLayer = openStreetMapLayer;
+    }
+    currentBaseLayer.addTo(map);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const select = document.getElementById('basemap-select');
+    if (select) {
+        select.addEventListener('change', (e) => switchBasemap(e.target.value));
+    }
+});
 
 // Ajouter le style par défaut de la carte Leaflet
 L.control.scale().addTo(map); // Ajouter une échelle pour montrer la distance
